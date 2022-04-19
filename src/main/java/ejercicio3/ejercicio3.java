@@ -21,6 +21,7 @@ public class ejercicio3 {
     public static void main(String[] args) {
         String idFichero = "letras.txt";
         String tmp;
+        int contador = 0;
         Random random = new Random();
         String letra = "ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -43,8 +44,10 @@ public class ejercicio3 {
                     flujo.write(tmp + ";");
                     //Después de cada iteración habrá un salto de linea
                     flujo.newLine();
+                    
                 } else {
                     flujo.write(tmp + ";");
+                    i--;
                 }
             }
             // Metodo fluh() guarda cambios en disco 

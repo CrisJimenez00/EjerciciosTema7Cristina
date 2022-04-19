@@ -34,13 +34,14 @@ public class ejercicio2 {
                 //Primero hacemos que el usuario ponga por teclado el texto
                 System.out.println("Escriba el texto que desea que esté en el txt:");
                 tmp = teclado.next();
+                
+                if (!tmp.equalsIgnoreCase("eof")) {
+                    //cada vez que le da enter se va a escribir en el txt el texto introducido por teclado
+                    flujo.write(tmp);
 
-                //cada vez que le da enter se va a escribir en el txt el texto introducido por teclado
-                flujo.write(tmp);
-
-                //Después de cada iteración habrá un salto de linea
-                flujo.newLine();
-
+                    //Después de cada iteración habrá un salto de linea
+                    flujo.newLine();
+                } 
                 //Hasta que no ponga eof no se parará de solicitar datos
             } while (!tmp.equalsIgnoreCase("eof"));
             // Metodo fluh() guarda cambios en disco 

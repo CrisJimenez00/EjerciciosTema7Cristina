@@ -40,7 +40,7 @@ public class ejercicio5 {
                 tokens = linea.split("\t");
                 for (String string : tokens) {
                     System.out.print(string + "\t");
-                    suma += Integer.parseInt(string);
+                    suma += Integer.parseInt(string); 
                 }
                 System.out.println();
                 System.out.println("La suma de la fila " + contador + " es de: " + suma);

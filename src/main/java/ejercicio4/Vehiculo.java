@@ -96,4 +96,10 @@ public class Vehiculo {
         return atributosSuperClase;
     }
 
+    @Override
+    public String toString() {
+        return  bastidor + ":" + matricula + ":" + marca + ":" + modelo + ":" + color + ":" + tarifa + ":" + disponible;
+    }
+    
+
 }

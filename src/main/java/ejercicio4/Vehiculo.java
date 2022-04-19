@@ -90,7 +90,7 @@ public class Vehiculo {
         String atributosSuperClase;
 
         // Llamada al método getAtributos() de la clase Vehiculo
-        atributosSuperClase = "bastidor=" + bastidor + ", matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", color=" + color + ", tarifa=" + tarifa + ", disponible=" + disponible;
+        atributosSuperClase =  bastidor + ";" + matricula + ";" + marca + ";" + modelo + ";" + color + ";" + tarifa + ";" + disponible;
 
         // Ahora concateno los atributos de la superclase con los de la subclase
         return atributosSuperClase;

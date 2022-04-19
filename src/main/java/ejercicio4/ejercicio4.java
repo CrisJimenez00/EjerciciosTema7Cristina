@@ -56,10 +56,10 @@ public class ejercicio4 {
         lista.add(new Furgoneta(4333L, "4080 FUR", "Fiat", "Ducato", "Azul", 80.0, 1200, 8));
         lista.add(new Furgoneta(4333L, "4080 FUR", "Fiat", "Ducato", "Azul", 80.0, 1200, 8));
 
-        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
 
             for (int i = 0; i < lista.size(); i++) {
-                flujo.write(lista.get(i).toString() + ";");
+                flujo.write(lista.get(i).getAtributos() + ";");
                 flujo.newLine();
             }
             // Metodo fluh() guarda cambios en disco 

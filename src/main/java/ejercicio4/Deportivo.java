@@ -24,7 +24,7 @@ public class Deportivo extends Vehiculo {
 
     @Override
     public String getAtributos() {
-        return super.getAtributos() + " Cilindrada (cm3): " + this.cilindrada;
+        return super.getAtributos() + "; " + this.cilindrada;
     }
 
 }

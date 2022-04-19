@@ -2,27 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package ejercicio2;
+package ejercicio3;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
  * @author cristina
  */
-public class ejercicio2 {
+public class ejercicio3 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Fichero a crear. Ruta relativa a la carpeta raíz del proyecto
-        Scanner teclado = new Scanner(System.in);
-        String idFichero = "texto.txt";
+        String idFichero = "letras.txt";
         String tmp;
+        Random random = new Random();
+        String letra = "ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
         // Si se utiliza el constructor FileWriter(idFichero, true) entonces se anexa información
         // al final del fichero idFichero
@@ -30,26 +30,29 @@ public class ejercicio2 {
         // y se encarga de cerrar el recurso "flujo" una vez finalizadas las operaciones
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
 
-            do {
-                //Primero hacemos que el usuario ponga por teclado el texto
-                System.out.println("Escriba el texto que desea que esté en el txt:");
-                tmp = teclado.next();
+            for (int i = 0; i < 75; i++) {
+                //Cogemos una posición aleatoria del String de letras
+                int posi = random.nextInt(letra.length());
+                char letrilla = letra.charAt(posi);
 
-                //cada vez que le da enter se va a escribir en el txt el texto introducido por teclado
-                flujo.write(tmp);
+                //tmp se convierte en la letra
+                tmp = String.valueOf(letrilla);
 
-                //Después de cada iteración habrá un salto de linea
-                flujo.newLine();
-
-                //Hasta que no ponga eof no se parará de solicitar datos
-            } while (!tmp.equalsIgnoreCase("eof"));
+                if (tmp.equalsIgnoreCase("g")) {
+                    //cada vez que le da enter se va a escribir en el txt el texto introducido por teclado
+                    flujo.write(tmp + ";");
+                    //Después de cada iteración habrá un salto de linea
+                    flujo.newLine();
+                } else {
+                    flujo.write(tmp + ";");
+                }
+            }
             // Metodo fluh() guarda cambios en disco 
             flujo.flush();
             System.out.println("Fichero " + idFichero + " creado correctamente.");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
 }

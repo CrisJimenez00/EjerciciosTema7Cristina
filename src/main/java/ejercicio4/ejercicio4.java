@@ -8,7 +8,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -20,7 +19,6 @@ public class ejercicio4 {
         // Fichero a crear. Ruta relativa a la carpeta raíz del proyecto
         String idFichero = "coches.txt";
         ArrayList<Vehiculo> lista = new ArrayList();
-        int contador = 0;
         //Turismos
         lista.add(new Turismo(345674L, "4060 TUR", "Skoda", "Fabia", "Blanco", 90.0, 2, false));
         lista.add(new Turismo(345674L, "4060 TUU", "Seat", "Leon", "Negro", 90.0, 2, false));
@@ -57,12 +55,11 @@ public class ejercicio4 {
         lista.add(new Furgoneta(4333L, "4080 FUR", "Fiat", "Ducato", "Azul", 80.0, 1200, 8));
         lista.add(new Furgoneta(4333L, "4080 FUR", "Fiat", "Ducato", "Azul", 80.0, 1200, 8));
 
-        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
 
             for (int i = 0; i < lista.size(); i++) {
-                flujo.write(contador + "-" + lista.get(i).toString());
+                flujo.write(lista.get(i).toString() + ";");
                 flujo.newLine();
-                contador++;
             }
             // Metodo fluh() guarda cambios en disco 
             flujo.flush();

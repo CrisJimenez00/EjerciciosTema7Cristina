@@ -24,13 +24,14 @@ public class ejercicio5 {
         String linea;
         int contador = 1;
         int suma = 0;
+        int sumaTotal = 0;
 
         System.out.println("Leyendo el fichero: " + idFichero);
 
         // Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
         // Estructura try-with-resources. Permite cerrar los recursos una vez finalizadas
         // las operaciones con el archivo
-        try (Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
+        try ( Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
             // hasNextLine devuelve true mientras haya líneas por leer
             while (datosFichero.hasNextLine()) {
                 // Guarda la línea completa en un String
@@ -38,16 +39,19 @@ public class ejercicio5 {
                 // Se guarda en el array de String cada elemento de la
                 // línea en función del carácter separador de campos del fichero CSV
                 tokens = linea.split("\t");
+
                 for (String string : tokens) {
                     System.out.print(string + "\t");
-                    suma += Integer.parseInt(string); 
+                    suma += Integer.parseInt(string);
                 }
                 System.out.println();
                 System.out.println("La suma de la fila " + contador + " es de: " + suma);
+                sumaTotal += suma;
                 suma = 0;
                 contador++;
 
             }
+            System.out.println("El resultado total es de: " + sumaTotal);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }

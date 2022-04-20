@@ -51,12 +51,12 @@ public class Turismo extends Vehiculo {
     public String getAtributos() {
 
         // Llamada al método getAtributos() de la clase Vehiculo
-        return super.getAtributos() + ";" + this.puertas + ";" + this.marchaAutomatica;
+        return "0-" + super.getAtributos() + ";" + this.puertas + ";" + this.marchaAutomatica;
     }
 
     @Override
     public String toString() {
-        return super.toString() + ":" + puertas + ":" + marchaAutomatica;
+        return "0-" + super.toString() + ":" + puertas + ":" + marchaAutomatica;
     }
 
 }

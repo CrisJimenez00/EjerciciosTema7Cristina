@@ -31,13 +31,12 @@ public class Furgoneta extends Vehiculo {
 
     @Override
     public String getAtributos() {
-        return super.getAtributos() + "; " + this.carga
-                + "; " + this.volumen;
+        return "2-" + super.getAtributos() + "; " + this.carga + "; " + this.volumen;
     }
 
     @Override
     public String toString() {
-        return super.toString() + ":" + carga + ":" + volumen;
+        return "2-" + super.toString() + ":" + carga + ":" + volumen;
     }
 
 }

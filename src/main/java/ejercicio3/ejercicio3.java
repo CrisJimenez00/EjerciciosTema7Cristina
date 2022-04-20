@@ -21,7 +21,6 @@ public class ejercicio3 {
     public static void main(String[] args) {
         String idFichero = "letras.txt";
         String tmp;
-        int contador = 0;
         Random random = new Random();
         String letra = "ABCDEFGHIJKLMNOPRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -32,6 +31,7 @@ public class ejercicio3 {
         try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
 
             for (int i = 0; i < 75; i++) {
+
                 //Cogemos una posición aleatoria del String de letras
                 int posi = random.nextInt(letra.length());
                 char letrilla = letra.charAt(posi);
@@ -44,10 +44,10 @@ public class ejercicio3 {
                     flujo.write(tmp + ";");
                     //Después de cada iteración habrá un salto de linea
                     flujo.newLine();
-                    
+
                 } else {
                     flujo.write(tmp + ";");
-                    i--;
+                    i--;//no es recomendable trabajar con la variable i(lo suyo sería un do while)
                 }
             }
             // Metodo fluh() guarda cambios en disco 

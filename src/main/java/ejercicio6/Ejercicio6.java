@@ -6,6 +6,8 @@ package ejercicio6;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -17,33 +19,32 @@ public class Ejercicio6 {
     public static void main(String[] args) {
         // Fichero a leer con datos de ejemplo
         String idFichero = "letras.txt";
-
-        // Variables para guardar los datos que se van leyendo
-        String[] tokens;
-        String linea;
-
         System.out.println("Leyendo el fichero: " + idFichero);
+        //Ruta
+        String route = "letras.txt";
 
-        // Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
-        // Estructura try-with-resources. Permite cerrar los recursos una vez finalizadas
-        // las operaciones con el archivo
-        try ( Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
-            // hasNextLine devuelve true mientras haya líneas por leer
-            while (datosFichero.hasNextLine()) {
-                // Guarda la línea completa en un String
-                linea = datosFichero.nextLine();
-                // Se guarda en el array de String cada elemento de la
-                // línea en función del carácter separador de campos del fichero CSV
-                tokens = linea.split(";");
-                for (String string : tokens) {
-                    System.out.print(string + "\t");
-                    
+        //Datos archivos
+        String data = "";
+        ArrayList<Integer> lineasOcurrencia = new ArrayList<>();
+        int contador = 0;
+        //Lectura
+        try (Scanner sc = new Scanner(new FileReader(route))) {
+            while (sc.hasNextLine()) {
+                String linea = sc.nextLine();
+                data += linea + "\n";
+                contador++;
+                if (linea.contains("w;e;b") || linea.contains("W;E;B")) {
+                    lineasOcurrencia.add(contador);
                 }
-                System.out.println();
             }
         } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
+
+        System.out.println(data);
+        lineasOcurrencia.forEach(valor -> {
+            System.out.println(valor);
+        });
     }
 
 }

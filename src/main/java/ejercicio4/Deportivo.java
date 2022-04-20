@@ -18,10 +18,20 @@ public class Deportivo extends Vehiculo {
     }
 // métodos ‘get’ de la subclase Deportivo. Se omiten setters 
 
+    public Deportivo() {
+    }
+
+    
+
+    public void setCilindrada(int cilindrada) {
+        this.cilindrada = cilindrada;
+    }
+    
+
     public int getCilindrada() {
         return this.cilindrada;
     }
-
+    
     @Override
     public String getAtributos() {
         return "1-" + super.getAtributos() + "; " + this.cilindrada;
@@ -29,7 +39,7 @@ public class Deportivo extends Vehiculo {
 
     @Override
     public String toString() {
-        return "1-" + super.toString() + ":" + cilindrada;
+        return "1:" + super.toString() + ":" + cilindrada;
     }
 
 }

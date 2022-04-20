@@ -27,6 +27,13 @@ public class Turismo extends Vehiculo {
         this.marchaAutomatica = marchaAutomatica;
     }
 
+    public Turismo() {
+    }
+    
+    public void setPuertas(int puertas) {    
+        this.puertas = puertas;
+    }
+
     // Esta clase ahora no implementa métodos aunque hereda los de Vehiculo
     // No implementa constructor, Java creará uno por defecto
 //    public String getAtributos() {
@@ -39,6 +46,10 @@ public class Turismo extends Vehiculo {
 //        // Ahora concateno los atributos de la superclase con los de la subclase
 //        return atributosSuperClase + " Puertas: " + this.puertas + " Marcha automática: " + this.marchaAutomatica;
 //    }
+    public void setMarchaAutomatica(boolean marchaAutomatica) {    
+        this.marchaAutomatica = marchaAutomatica;
+    }
+
     public int getPuertas() {
         return this.puertas;
     }
@@ -56,7 +67,7 @@ public class Turismo extends Vehiculo {
 
     @Override
     public String toString() {
-        return "0-" + super.toString() + ":" + puertas + ":" + marchaAutomatica;
+        return "0:" + super.toString() + ":" + puertas + ":" + marchaAutomatica;
     }
 
 }

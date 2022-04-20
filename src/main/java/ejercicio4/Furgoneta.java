@@ -19,6 +19,10 @@ public class Furgoneta extends Vehiculo {
         this.carga = carga;
         this.volumen = volumen;
     }
+
+    public Furgoneta() {
+    }
+    
 // métodos ‘get’ de la subclase Furgoneta. Se omiten setters
 
     public int getCarga() {
@@ -29,6 +33,15 @@ public class Furgoneta extends Vehiculo {
         return this.volumen;
     }
 
+    public void setCarga(int carga) {
+        this.carga = carga;
+    }
+
+    public void setVolumen(int volumen) {
+        this.volumen = volumen;
+    }
+    
+
     @Override
     public String getAtributos() {
         return "2-" + super.getAtributos() + "; " + this.carga + "; " + this.volumen;
@@ -36,7 +49,7 @@ public class Furgoneta extends Vehiculo {
 
     @Override
     public String toString() {
-        return "2-" + super.toString() + ":" + carga + ":" + volumen;
+        return "2:" + super.toString() + ":" + carga + ":" + volumen;
     }
 
 }

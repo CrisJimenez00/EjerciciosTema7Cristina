@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author cristina
  */
-public class ejercicio4 {
+public class Ejercicio4 {
 
     public static void main(String[] args) {
         // Fichero a crear. Ruta relativa a la carpeta raíz del proyecto

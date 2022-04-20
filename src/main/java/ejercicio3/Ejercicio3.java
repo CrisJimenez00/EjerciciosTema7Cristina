@@ -13,7 +13,7 @@ import java.util.Random;
  *
  * @author cristina
  */
-public class ejercicio3 {
+public class Ejercicio3 {
 
     /**
      * @param args the command line arguments

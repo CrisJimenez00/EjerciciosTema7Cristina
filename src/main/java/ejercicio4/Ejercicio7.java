@@ -43,7 +43,7 @@ public class Ejercicio7 {
     //Método el cual escribe en un csv de deportivos
     private static void escribirFicheroDeportivo(ArrayList<Deportivo> listaDeportivo) {
         //Escribimos el fichero de turismos
-        String idFichero = "Deportivo.csv";
+        String idFichero = "Deportivos.csv";
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             flujo.write("Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Cilindrada");
             flujo.newLine();
@@ -62,7 +62,7 @@ public class Ejercicio7 {
     //Método el cual escribe en un csv de furgonetas
     private static void escribirFicheroFurgoneta(ArrayList<Furgoneta> listaFurgoneta) {
         //Escribimos el fichero de turismos
-        String idFichero = "Furgoneta.csv";
+        String idFichero = "Furgonetas.csv";
         try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
             flujo.write("Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Carga;Volumen");
             flujo.newLine();

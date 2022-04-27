@@ -16,7 +16,9 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -112,7 +114,7 @@ public class Ejercicio10 {
                 linea = datosFichero.nextLine();
                 tokens = linea.split(";");
                 Vehiculo tmp;
-                
+
                 //Según el token 0 se crea un objeto de cada tipo vacío
                 switch (tokens[0]) {
                     case "0":
@@ -174,6 +176,7 @@ public class Ejercicio10 {
     }
 
     public static void main(String[] args) {
+        ArrayList<Vehiculo> listaVehiculo = new ArrayList<>();
 
         // Creo el directorio
         crearDirectorio("./copias");
@@ -195,14 +198,46 @@ public class Ejercicio10 {
         // Imprimir la lista por pantalla. 
         for (Vehiculo listaTurismo : listaTurismos) {
             System.out.println(listaTurismo.toString());
+            listaVehiculo.add(listaTurismo);
         }
         for (Vehiculo listaDeportivo : listaDeportivos) {
             System.out.println(listaDeportivo.toString());
+            listaVehiculo.add(listaDeportivo);
         }
         for (Vehiculo listaFurgoneta : listaFurgonetas) {
             System.out.println(listaFurgoneta.toString());
+            listaVehiculo.add(listaFurgoneta);
+        }
+        /*
+    Usando Streams, realiza las siguientes acciones sobre la lista de vehículos:
+    -Saber la cantidad de vehículos Citroen.
+    -Comprueba si hay algún Peugeot negro disponible en la lista.
+         */
+        System.out.println("\n\n------EJERCICIOS STREAM------");
+
+        System.out.println("\nEjercicio1--------\n");
+        listaVehiculo.stream()
+                .filter(coche -> coche.getColor().equalsIgnoreCase("Blanco"))
+                .distinct()
+                .sorted((p1, p2) -> p1.getMatricula().compareTo(p2.getMatricula()))
+                .forEach(System.out::println);
+
+        System.out.println("\nEjercicio2--------\n");
+        List<String> marca = listaVehiculo.stream()
+                .filter(coche -> coche.isDisponible())
+                .map(coche -> coche.getMarca())
+                .distinct()
+                .collect(Collectors.toList());
+        for (String string : marca) {
+            System.out.println(string);
         }
 
+        System.out.println("\nEjercicio3--------\n");
+        long numCitroen =  listaVehiculo.stream()
+                .filter(coche -> coche.getMarca().equalsIgnoreCase("Citroen"))
+                .count();
+        System.out.println("Hay " + numCitroen + " Citroens");
+        
     }
 
 }

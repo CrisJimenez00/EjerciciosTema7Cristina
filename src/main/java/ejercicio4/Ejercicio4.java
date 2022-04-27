@@ -21,14 +21,14 @@ public class Ejercicio4 {
         ArrayList<Vehiculo> lista = new ArrayList();
         //Turismos
         lista.add(new Turismo(345674L, "4060 TUR", "Skoda", "Fabia", "Blanco", 90.0, 2, false));
-        lista.add(new Turismo(345674L, "4060 TUU", "Seat", "Leon", "Negro", 90.0, 2, false));
+        lista.add(new Turismo(345674L, "4060 TUU", "Seat", "Leon", "Negro", 90.0, 2, true));
         lista.add(new Turismo(345674L, "4060 TRR", "Skoda", "Fabia", "Dorado", 90.0, 2, false));
         lista.add(new Turismo(345674L, "4060 TTT", "Seat", "Ibiza", "Blanco", 90.0, 2, false));
-        lista.add(new Turismo(345674L, "4062 TUR", "Porshe", "Panamera", "Negro", 90.0, 2, false));
+        lista.add(new Turismo(345674L, "4062 TUR", "Porshe", "Panamera", "Negro", 90.0, 2, true));
         lista.add(new Turismo(345674L, "4067 TUR", "Seat", "Leon", "Blanco", 90.0, 2, false));
         lista.add(new Turismo(345674L, "4068 TUR", "Seat", "Ibiza", "Blanco", 90.0, 2, false));
         lista.add(new Turismo(345674L, "4061 TUR", "Skoda", "Fabia", "Blanco", 90.0, 2, false));
-        lista.add(new Turismo(345674L, "4063 TUR", "Skoda", "Fabia", "Blanco", 90.0, 2, false));
+        lista.add(new Turismo(345674L, "4063 TUR", "Skoda", "Fabia", "Blanco", 90.0, 2, true));
         lista.add(new Turismo(345674L, "4060 TYR", "Porshe", "Panamera", "Blanco", 90.0, 2, false));
 
         //Deportivos

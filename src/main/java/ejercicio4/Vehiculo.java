@@ -25,7 +25,7 @@ public class Vehiculo {
         this.modelo = modelo;
         this.color = color;
         this.tarifa = tarifa;
-        this.disponible = false;
+        this.disponible = true;
     }
 
     public Vehiculo() {

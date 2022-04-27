@@ -104,61 +104,55 @@ public class Ejercicio10 {
         String linea;
         ArrayList<Vehiculo> vehiculos = new ArrayList<>();
 
-        try (Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
+        try ( Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
 
             datosFichero.nextLine();
 
             while (datosFichero.hasNextLine()) {
-
                 linea = datosFichero.nextLine();
                 tokens = linea.split(";");
-
-                switch (Integer.parseInt(tokens[0])) {
-
-                    case 0:
-                        Turismo t1 = new Turismo();
-                        t1.setBastidor(Long.parseLong(tokens[1]));
-                        t1.setMatricula(tokens[2]);
-                        t1.setMarca(tokens[3]);
-                        t1.setModelo(tokens[4]);
-                        t1.setColor(tokens[5]);
-                        t1.setTarifa(Double.parseDouble(tokens[6]));
-                        t1.setDisponible(Boolean.parseBoolean(tokens[7]));
-                        t1.setPuertas(Integer.parseInt(tokens[8]));
-                        t1.setMarchaAutomatica(Boolean.parseBoolean(tokens[9]));
-                        vehiculos.add(t1);
+                Vehiculo tmp;
+                
+                //Según el token 0 se crea un objeto de cada tipo vacío
+                switch (tokens[0]) {
+                    case "0":
+                        tmp = new Turismo();
                         break;
-
-                    case 1:
-                        Deportivo d1 = new Deportivo();
-                        d1.setBastidor(Long.parseLong(tokens[1]));
-                        d1.setMatricula(tokens[2]);
-                        d1.setMarca(tokens[3]);
-                        d1.setModelo(tokens[4]);
-                        d1.setColor(tokens[5]);
-                        d1.setTarifa(Double.parseDouble(tokens[6]));
-                        d1.setDisponible(Boolean.valueOf(tokens[7]));
-                        d1.setCilindrada(Integer.parseInt(tokens[8].substring(0, tokens[8].length() - 1)));
-                        vehiculos.add(d1);
+                    case "1":
+                        tmp = new Deportivo();
                         break;
-
-                    case 2:
-                        Furgoneta f1 = new Furgoneta();
-                        f1.setBastidor(Long.parseLong(tokens[1]));
-                        f1.setMatricula(tokens[2]);
-                        f1.setMarca(tokens[3]);
-                        f1.setModelo(tokens[4]);
-                        f1.setColor(tokens[5]);
-                        f1.setTarifa(Double.parseDouble(tokens[6]));
-                        f1.setDisponible(Boolean.valueOf(tokens[7]));
-                        f1.setCarga(Integer.parseInt(tokens[8]));
-                        f1.setVolumen(Integer.parseInt(tokens[9].substring(0, tokens[9].length() - 1)));
-                        vehiculos.add(f1);
+                    default:
+                        tmp = new Furgoneta();
                         break;
+                }
+
+                //Como estos valores nunca cambian independientemente del objeto pues lo dejamos ahí
+                tmp.setBastidor(Long.parseLong(tokens[1]));
+                tmp.setMatricula(tokens[2]);
+                tmp.setMarca(tokens[3]);
+                tmp.setModelo(tokens[4]);
+                tmp.setColor(tokens[5]);
+                tmp.setTarifa(Double.parseDouble(tokens[6]));
+                tmp.setDisponible(Boolean.valueOf(tokens[7]));
+
+                //Aquí ya tratamos con los atributos según el tipo de coche
+                if (tmp instanceof Turismo) {
+
+                    ((Turismo) tmp).setPuertas(Integer.parseInt(tokens[8]));
+                    ((Turismo) tmp).setMarchaAutomatica(Boolean.parseBoolean(tokens[9]));
+
+                } else if (tmp instanceof Furgoneta) {
+
+                    ((Furgoneta) tmp).setCarga(Integer.parseInt(tokens[8].substring(1)));
+                    ((Furgoneta) tmp).setVolumen(Integer.parseInt(tokens[9].substring(1)));
+
+                } else if (tmp instanceof Deportivo) {
+
+                    ((Deportivo) tmp).setCilindrada(Integer.parseInt(tokens[8].substring(1)));
 
                 }
+                vehiculos.add(tmp);
             }
-
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -181,8 +175,6 @@ public class Ejercicio10 {
 
     public static void main(String[] args) {
 
-        ArrayList<Vehiculo> lista = new ArrayList<>();
-
         // Creo el directorio
         crearDirectorio("./copias");
         // Copio los archivos a la nueva ruta
@@ -192,19 +184,23 @@ public class Ejercicio10 {
 
         listarDirectorio("./copias");
 
-        leerFicheros("./copias/Turismos.csv");
-        leerFicheros("./copias/Deportivos.csv");
-        leerFicheros("./copias/Furgonetas.csv");
+        ArrayList<Vehiculo> listaTurismos = leerFicheros("./copias/Turismos.csv");
+        ArrayList<Vehiculo> listaDeportivos = leerFicheros("./copias/Deportivos.csv");
+        ArrayList<Vehiculo> listaFurgonetas = leerFicheros("./copias/Furgonetas.csv");
 
         borrarElemento("./Turismos.csv");
         borrarElemento("./Deportivos.csv");
         borrarElemento("./Furgonetas.csv");
 
-        //PREGUNTAR SOBRE ESTO A VICO DE POR QUÉ NO SE RELLENA DE OBJETOS
         // Imprimir la lista por pantalla. 
-        for (Vehiculo vehiculo : lista) {
-            
-            System.out.println(vehiculo.toString());
+        for (Vehiculo listaTurismo : listaTurismos) {
+            System.out.println(listaTurismo.toString());
+        }
+        for (Vehiculo listaDeportivo : listaDeportivos) {
+            System.out.println(listaDeportivo.toString());
+        }
+        for (Vehiculo listaFurgoneta : listaFurgonetas) {
+            System.out.println(listaFurgoneta.toString());
         }
 
     }

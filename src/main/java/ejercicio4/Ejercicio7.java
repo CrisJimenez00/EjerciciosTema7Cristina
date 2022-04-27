@@ -25,11 +25,11 @@ public class Ejercicio7 {
     private static void escribirFicheroTurismo(ArrayList<Turismo> listaTurismo) {
         //Escribimos el fichero de turismos
         String idFichero = "Turismos.csv";
-        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-            flujo.write("Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Puertas;Marcha Automatica");
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+            flujo.write("Numero;Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Puertas;Marcha Automatica");
             flujo.newLine();
             for (Turismo turismo : listaTurismo) {
-                flujo.write(turismo.getAtributos());
+                flujo.write("0;" + turismo.getAtributos());
                 flujo.newLine();
             }
             // Metodo fluh() guarda cambios en disco 
@@ -44,11 +44,11 @@ public class Ejercicio7 {
     private static void escribirFicheroDeportivo(ArrayList<Deportivo> listaDeportivo) {
         //Escribimos el fichero de turismos
         String idFichero = "Deportivos.csv";
-        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-            flujo.write("Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Cilindrada");
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+            flujo.write("Numero;Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Cilindrada");
             flujo.newLine();
             for (Deportivo deportivo : listaDeportivo) {
-                flujo.write(deportivo.getAtributos());
+                flujo.write("1;" + deportivo.getAtributos());
                 flujo.newLine();
             }
             // Metodo fluh() guarda cambios en disco 
@@ -63,11 +63,11 @@ public class Ejercicio7 {
     private static void escribirFicheroFurgoneta(ArrayList<Furgoneta> listaFurgoneta) {
         //Escribimos el fichero de turismos
         String idFichero = "Furgonetas.csv";
-        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
-            flujo.write("Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Carga;Volumen");
+        try ( BufferedWriter flujo = new BufferedWriter(new FileWriter(idFichero))) {
+            flujo.write("Numero;Bastidor;Matricula;Marca;Modelo;Color;Tarifa;Disponible;Carga;Volumen");
             flujo.newLine();
             for (Furgoneta furgoneta : listaFurgoneta) {
-                flujo.write(furgoneta.getAtributos());
+                flujo.write("2;" + furgoneta.getAtributos());
                 flujo.newLine();
             }
             // Metodo fluh() guarda cambios en disco 
@@ -107,7 +107,7 @@ public class Ejercicio7 {
         // Inicialización del flujo "datosFichero" en función del archivo llamado "idFichero"
         // Estructura try-with-resources. Permite cerrar los recursos una vez finalizadas
         // las operaciones con el archivo
-        try (Scanner datosFichero = new Scanner(new File(idFichero))) {
+        try ( Scanner datosFichero = new Scanner(new File(idFichero))) {
 
             datosFichero.nextLine();
 

@@ -106,7 +106,7 @@ public class Ejercicio10 {
         String linea;
         ArrayList<Vehiculo> vehiculos = new ArrayList<>();
 
-        try ( Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
+        try (Scanner datosFichero = new Scanner(new File(idFichero), "UTF-8")) {
 
             datosFichero.nextLine();
 
@@ -210,7 +210,6 @@ public class Ejercicio10 {
         }
         /*
     Usando Streams, realiza las siguientes acciones sobre la lista de vehículos:
-    -Saber la cantidad de vehículos Citroen.
     -Comprueba si hay algún Peugeot negro disponible en la lista.
          */
         System.out.println("\n\n------EJERCICIOS STREAM------");
@@ -233,11 +232,17 @@ public class Ejercicio10 {
         }
 
         System.out.println("\nEjercicio3--------\n");
-        long numCitroen =  listaVehiculo.stream()
+        long numCitroen = listaVehiculo.stream()
                 .filter(coche -> coche.getMarca().equalsIgnoreCase("Citroen"))
                 .count();
         System.out.println("Hay " + numCitroen + " Citroens");
-        
+
+        boolean hayPeugeotNegro = listaVehiculo.stream()
+                .filter(coche -> coche.getMarca().equalsIgnoreCase("Peugeot"))
+                .filter(coche -> coche.getColor().equalsIgnoreCase("Negro"))
+                .filter(coche -> coche.isDisponible())
+                .isParallel();
+        System.out.println("¿Hay un peugeot negro disponible? " + hayPeugeotNegro);
     }
 
 }

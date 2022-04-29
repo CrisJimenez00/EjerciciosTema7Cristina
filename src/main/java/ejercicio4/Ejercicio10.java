@@ -238,10 +238,7 @@ public class Ejercicio10 {
         System.out.println("Hay " + numCitroen + " Citroens");
 
         boolean hayPeugeotNegro = listaVehiculo.stream()
-                .filter(coche -> coche.getMarca().equalsIgnoreCase("Peugeot"))
-                .filter(coche -> coche.getColor().equalsIgnoreCase("Negro"))
-                .filter(coche -> coche.isDisponible())
-                .isParallel();
+                .anyMatch(v-> v.getMarca().equalsIgnoreCase("peugeot")&& v.getColor().equalsIgnoreCase("negro"));
         System.out.println("¿Hay un peugeot negro disponible? " + hayPeugeotNegro);
     }
 
